@@ -1,12 +1,19 @@
+export const GET_ALL_USERS= "GET_ALL_USERS";
+export const GET_ALL_USERS_POSTS= "GET_ALL_USERS_POSTS";
+export const GET_ALL_COMMENTS_POSTS= "GET_ALL_COMMENTS_POSTS";
+export const GET_ALL_POSTS= "GET_ALL_POSTS";
+
 export function getAllUsers(){
-    return {type: 'GET_ALL_USERS', payload}
-}
-export function getAllUsersPosts(){
-    return {type: 'GET_ALL_USERS', payload}
-}
-export function getAllCommentsPost(){
-    return {type: 'GET_ALL_USERS', payload}
-}
-export function getAllPosts(){
-    return {type: 'GET_ALL_USERS', payload}
+    return function(dispatch){
+     return fetch(`https://jsonplaceholder.typicode.com/users`)
+    .then(response => response.json())//con esto se convierte el json a objeto javascript
+    .then(json=> dispatch({type: GET_ALL_USERS, payload: json}))
+}};
+
+export function getAllUsersPosts(id){
+    return function(dispatch){
+        return fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
+        .then(response => response.json())
+        .then(json => dispatch({type: GET_ALL_USERS_POSTS, payload: json}))
+    }
 }
