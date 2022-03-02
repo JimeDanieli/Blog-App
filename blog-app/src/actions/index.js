@@ -27,5 +27,9 @@ export function getAllCommentsPosts(postsId){
 }
 
 export function getAllPosts(){
-
+    return function(dispatch){
+        return fetch(`https://jsonplaceholder.typicode.com/posts`)
+        .then(response =>response.json())
+        .then(json => dispatch({type: GET_ALL_POSTS, payload: json}))
+    }
 }
