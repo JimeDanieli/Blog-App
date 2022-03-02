@@ -33,11 +33,11 @@ export default function rootReducer(state = initialState, action){
                 //userPosts: [...state.userPosts, ...action.payload]
                 //[{post}, {post}]
            };
-       /*  case GET_ALL_COMMENTS_POSTS:
+        case GET_ALL_COMMENTS_POSTS:
             return {
                 ...state,
                 commentsPosts: action.payload
-            }; */
+            };
         default:
             return state;
     }
